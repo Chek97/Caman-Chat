@@ -15,7 +15,7 @@
                 <a class="nav-link" href="../landing/about.php">Sobre la applicacion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Iniciar Session</a>
+                <a class="nav-link" href="../login/login.php">Iniciar Session</a>
             </li>
         </ul>
     </div>
