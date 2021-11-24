@@ -41,16 +41,31 @@
         }
 
         public function validateUser($data){
-            $response = $this->userModel->userExist($data['username']);
-            if($response != []){
-                if(password_verify($data['password'], $response['password'])){
-                    echo('El usuario se autentico');
+            //validar campos
+            $validation = validateFormFields($data);
+            if(count($validation) == 0){
+                $response = $this->userModel->userExist($data['username']);
+                if($response != []){
+                    if(password_verify($data['password'], $response['password'])){
+                        header('location: ../../Views/main/main.php');
+                    }else {
+                        $_SESSION['message'] = 'Usuario y/o contraseña incorrecta(s)';
+                        $_SESSION['status'] = 'danger';
+                        header('location: ../../Views/login/login.php');
+                    }
                 }else {
-                    echo('El usuario no se ha autenticado');
+                    $_SESSION['message'] = 'El usuario no existe';
+                    $_SESSION['status'] = 'danger';
+                    header('location: ../../Views/login/login.php');
                 }
-            }else {
-                echo('El usuario no exite');
+            }else{
+                $_SESSION['message'] = 'No se inicio la session';
+                $_SESSION['status'] = 'danger';
+                $_SESSION['errors'] = $validation;
+                header('location: ../../Views/login/login.php');
             }
+
+
         }
 
         public function updateUser(){
