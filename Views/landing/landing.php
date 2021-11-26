@@ -5,7 +5,10 @@
     <?php include_once('../includes/header.php'); ?>
 </head>
 <body>
-    <?php include('../includes/navbar.php'); ?>
+    <?php
+        session_start(); 
+        include('../includes/navbar.php'); 
+    ?>
     <header>
         <section>
             <h1>CAMAN CHAT</h1>

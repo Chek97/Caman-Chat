@@ -12,27 +12,7 @@
                 <h1>Iniciar Session</h1>
             </header>
             <hr>
-            <?php
-                session_start(); 
-                if(isset($_SESSION['errors']) && isset($_SESSION['message'])){
-                    echo("<div class='alert alert-" . $_SESSION['status'] ." alert-dismissible fade show' role='alert'>
-                            <p>" . $_SESSION['message'] . "</p>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                            </div>"
-                        );
-                }else if(isset($_SESSION['status']) && isset($_SESSION['message'])){
-                    echo("<div class='alert alert-" . $_SESSION['status'] ." alert-dismissible fade show' role='alert'>
-                            <p>" . $_SESSION['message'] . "</p>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                        </div>"
-                    );
-                }
-                session_destroy();
-            ?>
+            <?php require('../includes/session.php'); ?>
             <form action="../../Controllers/User/UserController.php?a=validate" method="POST">
                 <div class="form-group">
                   <label for="">Usuario</label>

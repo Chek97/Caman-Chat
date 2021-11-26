@@ -5,6 +5,12 @@
     <?php include_once('../includes/header.php'); ?>
 </head>
 <body>
+    <?php
+        session_start(); 
+        include_once('../../Helpers/sessionStatus.php');
+        isLoggin();
+        include('../includes/navbar.php'); 
+    ?>
     <header>
         <h1>Inicio</h1>
     </header>
