@@ -47,6 +47,7 @@
                 $response = $this->userModel->userExist($data['username']);
                 if($response != []){
                     if(password_verify($data['password'], $response['password'])){
+                        $_SESSION['user'] = $response['username'];
                         header('location: ../../Views/main/main.php');
                     }else {
                         $_SESSION['message'] = 'Usuario y/o contraseña incorrecta(s)';
@@ -71,6 +72,12 @@
         public function updateUser(){
 
         }
+
+        public function logOut(){
+            session_unset();
+            session_destroy();
+            header('location: ../../Views/login/login.php');
+        }
         
     }
 
@@ -87,6 +94,9 @@
                 break;
             case 'validate':
                 $controller->validateUser($_POST);
+                break;
+            case 'logout':
+                $controller->logOut();
                 break;
             default:
                 echo('Accion no permitida');

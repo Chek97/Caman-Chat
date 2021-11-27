@@ -5,7 +5,10 @@
     <?php include_once('../includes/header.php'); ?>    
 </head>
 <body>
-    <?php include_once('../includes/navbar.php'); ?>    
+    <?php
+        session_start(); 
+        include_once('../includes/navbar.php'); 
+    ?>    
     <header>
         <h1>Sobre la aplicacion</h1>
     </header>
