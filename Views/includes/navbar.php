@@ -15,7 +15,11 @@
                 <a class="nav-link navbar-link-custom" href="../landing/about.php">Sobre la applicacion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link navbar-link-login" href="../login/login.php">Iniciar Session</a>
+                <?php if(isset($_SESSION['user'])){ ?>
+                    <a class="nav-link" href="../../Controllers/User/UserController.php?a=logout">Salir</a>
+                <?php }else{ ?>
+                    <a class="nav-link" href="../login/login.php">Iniciar Session</a>
+                <?php } ?>
             </li>
         </ul>
     </div>
