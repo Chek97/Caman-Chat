@@ -1,0 +1,34 @@
+footer {
+    background-color: #6495ed;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+.footer-section__info {
+    font-size: 16px;
+    width: 40%;
+    padding: 20px;
+}
+
+.footer-section__info p a {
+    font-weight: bold;
+    color: #212529;
+}
+
+.footer-section__about, .footer-section__social, .footer-section__help {
+    width: 15%;
+}
+
+.footer-section__about h3, .footer-section__social h3, .footer-section__help h3 {
+    font-family: Monserrat-Semibold;
+    font-size: 24px;
+}
+
+.footer-section__about ul, .footer-section__social ul, .footer-section__help ul {
+    list-style-type: none;
+}
+
+.footer-section__about ul li a, .footer-section__social ul li a, .footer-section__help ul li a{
+    color: #212529;
+}
