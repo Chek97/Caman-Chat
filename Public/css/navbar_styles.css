@@ -1,0 +1,27 @@
+.navbar-custom-content {
+    background-color: #6495ed;
+    padding: 15px 30px;
+}
+
+.navbar-custom-content a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.navbar-link-custom:hover {
+    border-bottom: 2px solid #000;
+    color: #000;
+    transition: border .1000ms ease;
+}
+
+.navbar-link-login {
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.navbar-link-login:hover {
+    background-color: #fff;
+    color: #6495ed;
+    cursor: pointer;
+}
