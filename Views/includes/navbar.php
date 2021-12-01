@@ -16,9 +16,9 @@
             </li>
             <li class="nav-item">
                 <?php if(isset($_SESSION['user'])){ ?>
-                    <a class="nav-link" href="../../Controllers/User/UserController.php?a=logout">Salir</a>
+                    <a class="nav-link navbar-link-login" href="../../Controllers/User/UserController.php?a=logout">Salir</a>
                 <?php }else{ ?>
-                    <a class="nav-link" href="../login/login.php">Iniciar Session</a>
+                    <a class="nav-link navbar-link-login" href="../login/login.php">Iniciar Session</a>
                 <?php } ?>
             </li>
         </ul>

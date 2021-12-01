@@ -9,7 +9,7 @@
         session_start(); 
         include('../includes/navbar.php'); 
     ?>
-    <header>
+    <header class="header-landing">
         <section>
             <h1>CAMAN CHAT</h1>
             <p>
