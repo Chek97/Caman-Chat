@@ -1,103 +1,87 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 @font-face {
-    font-family: Monserrat-Regular;
-    src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
+  font-family: Monserrat-Regular;
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
-
 @font-face {
-    font-family: Monserrat-Light;
-    src: url('../fonts/Montserrat/Montserrat-Light.ttf');
+  font-family: Monserrat-Light;
+  src: url("../fonts/Montserrat/Montserrat-Light.ttf");
 }
-
 @font-face {
-    font-family: Monserrat-Semibold;
-    src: url('../fonts/Montserrat/Montserrat-SemiBold.ttf');
+  font-family: Monserrat-Semibold;
+  src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
-
 @font-face {
-    font-family: Monserrat-Bold;
-    src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
+  font-family: Monserrat-Bold;
+  src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
 }
-
 body {
-    font-family: Monserrat-Regular !important;
+  font-family: Monserrat-Regular !important;
+  /* --------------Principal--------------------- */
+}
+body .header-landing {
+  display: flex;
+  width: 100%;
+  height: 450px;
+  background-color: #dbdada;
+}
+body .header-landing section {
+  width: 50%;
+  padding: 20px;
+  margin: 15px 0;
+}
+body .header-landing section .button-landing {
+  background-color: #6495ed !important;
+  color: #fff !important;
+  font-size: 28px !important;
+}
+body .header-landing .image-one-container {
+  width: 50%;
+}
+body .header-landing .image-one-container img {
+  width: 100%;
+  height: 100%;
+}
+body .landing-comments {
+  display: flex;
+  flex-wrap: wrap;
+}
+body .landing-comments .landing-comments__article {
+  display: flex;
+  width: 50%;
+  padding: 80px 60px;
+}
+body .landing-comments .landing-comments__article img {
+  border: none;
+}
+body .landing-comments .landing-comments__article .landing-comments__article--info {
+  padding: 20px;
+  text-align: justify;
+}
+body .landing-comments .landing-comments__article .landing-comments__article--info blackquote {
+  font-family: Monserrat-Semibold;
+  width: 100%;
+  font-size: 28px;
+}
+body .landing-info-page {
+  text-align: center;
+}
+body .landing-info-page article {
+  padding: 3em;
+}
+body .landing-info-page article h2 {
+  font-family: Monserrat-Bold;
+  font-size: 32px;
+}
+body .landing-info-page article p {
+  font-size: 20px;
+  line-height: 2.5rem;
+  padding: 10px 0;
 }
 
-/* --------------Principal--------------------- */
-.header-landing {
-    display: flex;
-    width: 100%;
-    height: 450px;
-    background-color: #dbdada;
-}
-
-.header-landing section {
-    width: 50%;
-    padding: 20px;
-    margin: 15px 0;
-}
-
-.image-one-container {
-    width: 50%;
-}
-
-.image-one-container img {
-    width: 100%;
-    height: 100%;
-}
-
-.button-landing {
-    background-color: #6495ed !important;
-    color: #fff !important;
-    font-size: 28px !important;
-}
-
-.landing-comments {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.landing-comments__article {
-    display: flex;
-    width: 50%;
-    padding: 80px 60px;
-}
-
-.landing-comments__article img {
-    border: none;
-}
-
-.landing-comments__article--info {
-    padding: 20px;
-    text-align: justify;
-}
-
-.landing-comments__article--info > blackquote {
-    font-family: Monserrat-Semibold;
-    width: 100%;
-    font-size: 28px;
-}
-
-.landing-info-page {
-    text-align: center;
-}
-
-.landing-info-page article {
-    padding: 3em;
-}
-
-.landing-info-page article h2 {
-    font-family: Monserrat-Bold;
-    font-size: 32px;
-}
-
-.landing-info-page article p {
-    font-size: 20px;
-    line-height: 2.5rem;
-    padding: 10px 0;
-}
+/*# sourceMappingURL=main_styles.css.map */
