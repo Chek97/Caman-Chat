@@ -47,7 +47,7 @@
                 $response = $this->userModel->userExist($data['username']);
                 if($response != []){
                     if(password_verify($data['password'], $response['password'])){
-                        $_SESSION['user'] = $response['username'];
+                        $_SESSION['user'] = array('username' => $response['username'], 'id' => $response['id']);
                         header('location: ../../Views/main/main.php');
                     }else {
                         $_SESSION['message'] = 'Usuario y/o contraseña incorrecta(s)';
