@@ -1,0 +1,38 @@
+footer {
+    background-color: #6495ed;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    
+    .footer-section__info {
+        font-size: 16px;
+        width: 40%;
+        padding: 20px;
+
+        p {
+            a {
+                font-weight: bold;
+                color: #212529;
+            }
+        }
+    }
+    
+    .footer-section__about, .footer-section__social, .footer-section__help {
+        width: 15%;
+        
+        h3 {
+            font-family: Monserrat-Semibold;
+            font-size: 24px;
+        }
+
+        ul {
+            list-style-type: none;
+
+            li {
+                a {
+                    color: #212529;
+                }
+            }
+        }
+    }
+}
