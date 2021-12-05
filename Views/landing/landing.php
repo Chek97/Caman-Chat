@@ -20,7 +20,7 @@
                porro ducimus ut nihil.
             </p>
             <div style="text-align: center;">
-                <button class="button-landing btn">Empieza Ya</button>
+                <button class="btn btn-secondary btn-lg">Empieza Ya</button>
             </div>
         </section>
         <div class="image-one-container">

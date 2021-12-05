@@ -1,5 +1,5 @@
 .navbar-custom-content {
-    background-color: #6495ed;
+    background-color: $primary;
     padding: 15px 30px;
 
     a {
@@ -14,17 +14,19 @@
     &:hover {
         border-bottom: 2px solid #000;
         color: #000;
-        transition: border .1000ms ease;
+        transition: border .1000ms ease;//transision
     }
 }
 
 .navbar-link-login {
-    border: 1px solid #fff;
+    color: $secondary;
+    background-color: $primary;
+    border: 1px solid $secondary;
     border-radius: 4px;
-
+    
     &:hover {
-        background-color: #fff;
-        color: #6495ed;
+        background-color: $secondary;
+        color: #fff;
         cursor: pointer;
     }
 }
