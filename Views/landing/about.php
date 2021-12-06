@@ -9,10 +9,10 @@
         session_start(); 
         include_once('../includes/navbar.php'); 
     ?>    
-    <header>
+    <header class="about-header">
         <h1>Sobre la aplicacion</h1>
     </header>
-    <section>
+    <section class="about-content">
         <h2>Un poco de historia</h2>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 

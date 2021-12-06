@@ -6,8 +6,8 @@
 </head>
 <body>
     <?php include_once('../includes/navbar.php'); ?>
-    <section>
-        <div>
+    <section class="container">
+        <div class="login-container">
             <header>
                 <h1>Iniciar Session</h1>
             </header>
@@ -24,11 +24,11 @@
                   <input type="password" name="password" id="" class="form-control" aria-describedby="helpId">
                   <?php if(isset($_SESSION['errors']['password'])) echo("<small id='helpId' class='text-danger'>". $_SESSION['errors']['password'] . "</small>") ?>
                 </div>
-                <div>
-                    <button type="submit">Sign In</button>
+                <div class="mb-3">
+                    <button class="btn btn-secondary" type="submit">Sign In</button>
                 </div>
             </form>
-            <div>
+            <div class="pt-3 register-link">
                 ¿Aun no tienes una cuenta? crea una <a href="./register.php">ahora</a>
             </div>
         </div>

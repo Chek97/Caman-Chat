@@ -1,0 +1,27 @@
+.register-container {
+    margin: 20px 25%;
+    background-color: $primary;
+    padding: 10px 50px;
+    color: #fff;
+    border-radius: 15px;
+
+    header {
+        font-weight: bold;
+        font-family: Monserrat-Semibold;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 0;
+        font-size: 24px;
+
+        &:hover {
+            color: $secondary;
+        }
+    }
+
+    hr {
+        border: 1px solid $secondary;
+    }
+}
