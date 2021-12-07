@@ -6,10 +6,14 @@
 </head>
 <body>
     <?php include_once('../includes/navbar.php'); ?>
-    <section>
-        <div>
+    <section class="container">
+        <div class="register-container">
             <?php require('../includes/session.php'); ?>
-            <a href="./login.php?">Regresar</a>
+            <a href="./login.php?"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar</a>
+            <hr>
+            <header class="mb-3">
+                <h1>Registrar Nuevo Usuario</h1>
+            </header>
             <form action="../../Controllers/User/UserController.php?a=create" novalidate method="POST">
                 <div class="form-group">
                     <input type="text" name="username" id="" class="form-control" placeholder="Nombre de usuario" aria-describedby="helpId">
@@ -27,9 +31,9 @@
                     <input type="password" name="password" id="" class="form-control" placeholder="Contraseña" aria-describedby="helpId">
                     <?php if(isset($_SESSION['errors']['password'])) echo("<small id='helpId' class='text-danger'>". $_SESSION['errors']['password'] . "</small>") ?>
                 </div>
-                <div>
-                    <button type="submit">Crear Usuario</button>
-                    <button type="reset">Vaciar Campos</button>
+                <div class="pt-3 pb-3">
+                    <button class="btn btn-secondary" type="submit">Crear Usuario</button>
+                    <button class="btn btn-info" type="reset">Vaciar Campos</button>
                 </div>
             </form>
         </div>

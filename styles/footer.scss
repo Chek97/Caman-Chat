@@ -1,18 +1,27 @@
 footer {
-    background-color: #6495ed;
+    background-color: $secondary;
     display: flex;
     justify-content: space-between;
     padding: 10px 30px;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     
     .footer-section__info {
-        font-size: 16px;
+        font-size: 14px;
         width: 40%;
         padding: 20px;
 
         p {
             a {
+                color: $info;
+                font-size: 18px;
                 font-weight: bold;
-                color: #212529;
+
+                &:hover {
+                    color: #212529;
+                }
             }
         }
     }
@@ -30,7 +39,12 @@ footer {
 
             li {
                 a {
-                    color: #212529;
+                    color: $info;
+    
+                    &:hover {
+                        color: #212529;
+                        text-decoration: none;
+                    }
                 }
             }
         }

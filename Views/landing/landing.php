@@ -19,8 +19,8 @@
                perferendis quia nesciunt reprehenderit iure explicabo, 
                porro ducimus ut nihil.
             </p>
-            <div style="text-align: center;">
-                <button class="button-landing btn">Empieza Ya</button>
+            <div style="text-align: center;" class="mt-5">
+                <button class="btn btn-secondary btn-lg">Empieza Ya</button>
             </div>
         </section>
         <div class="image-one-container">
