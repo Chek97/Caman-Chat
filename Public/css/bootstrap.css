@@ -8,7 +8,7 @@ $dark:          $gray-800 !default; */
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --blue: #6495ED;
+  --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -10065,6 +10065,22 @@ body .landing-info-page article p {
 }
 .login-container .register-link a {
   color: #0B5394;
+}
+
+.main-content {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.main-content .main-aside {
+  border: 1px solid blue;
+}
+.main-content .main-conversations {
+  border: 1px solid green;
+}
+.main-content .main-header {
+  border: 1px solid purple;
 }
 
 .register-container {

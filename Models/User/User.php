@@ -32,6 +32,19 @@
                 return [];
             }
         }
+
+        public function updateUserCount($user_id, $contacts){
+            $newContacts = $contacts + 1;
+            
+            $request = $this->db->prepare("UPDATE user SET contacts = :con WHERE id = :id");
+            $request->execute(array(':con' => $newContacts, ':id' => $user_id));
+
+            if($request->rowCount() > 0){
+                return true;
+            }else {
+                return false;
+            }
+        }
     }
 
 ?>

@@ -9,10 +9,10 @@
             $this->db = Conection::connect();
         }
 
-        public function createContact($user, $name, $lastName, $password){
+        public function createContact($name, $lastName, $userId){
 
-            $request = $this->db->prepare("INSERT INTO user VALUES(NULL, :use, :nam, :las, '', '', 0, :pas)");
-            $request->execute(array(':use' => $user, ':nam' => $name, ':las' => $lastName, ':pas' => $password));
+            $request = $this->db->prepare("INSERT INTO contacts VALUES(NULL, :nam, :las, :useid)");
+            $request->execute(array(':nam' => $name, ':las' => $lastName, ':useid' => $userId));
             
             if($request->rowCount() > 0){
                 return true;
@@ -27,7 +27,7 @@
             $request->execute(array(':id' => $id));
 
             if($request->rowCount() > 0){
-                return $request->fetch(PDO::FETCH_ASSOC);
+                return $request->fetchAll(PDO::FETCH_ASSOC);
             }else {
                 return [];
             }
