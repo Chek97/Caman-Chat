@@ -2,10 +2,11 @@
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-@import "./main";
-@import "./about";
-@import "./login";
-@import "./home";
+@import "./main.scss";
+@import "./about.scss";
+@import "./login.scss";
+@import "./home.scss";
+@import "./contact_list.scss";
 @import "./register.scss";
 @import "./navbar.scss";
 @import "./footer.scss";

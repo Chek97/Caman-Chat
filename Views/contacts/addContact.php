@@ -19,15 +19,15 @@
             <input type="hidden" name="user_id" value="<?php echo($_SESSION['user']['id']); ?>">
             <div class="form-group">
               <label for="name">Nombres</label>
-              <input type="text" name="name" id="name" class="form-control" required placeholder="Nombres" aria-describedby="helpId">
+              <input type="text" name="name" id="name" class="form-control" placeholder="Nombres" aria-describedby="helpId">
             </div>
             <div class="form-group">
               <label for="last_name">Apellidos</label>
-              <input type="text" name="last_name" id="last_name" class="form-control" required placeholder="Apellidos" aria-describedby="helpId">
+              <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Apellidos" aria-describedby="helpId">
             </div>
             <div class="form-group">
               <label for="username">Usuario</label>
-              <input type="text" name="username" id="username" class="form-control" required placeholder="Nombre de usuario" aria-describedby="helpId">
+              <input type="text" name="username" id="username" class="form-control" placeholder="Nombre de usuario" aria-describedby="helpId">
             </div>
             <button type="submit" class="btn btn-secondary btn-block">Agregar</button>
         </form>

@@ -45,6 +45,14 @@
                 return false;
             }
         }
+
+        public function getContactsNumber($user_id){
+
+            $request = $this->db->prepare("SELECT contacts FROM user WHERE id= :id");
+            $request->execute(array(':id' => $user_id));
+
+            return $request->rowCount() > 0 ? $request->fetch() : 0;
+        }
     }
 
 ?>

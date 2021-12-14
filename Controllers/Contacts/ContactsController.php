@@ -32,17 +32,21 @@
                 $response = $this->contactModel->createContact($data['name'], $data['last_name'], $data['user_id']);
 
                 if($response){
-                    $contactResponse = $this->userModel->updateUserCount($data['user_id'], $_SESSION['user']['contacts']);
-                    if($contactResponse){
-                        echo('Todo funciono bien');
-                    }else{
-                        echo('Funciono el creado pero no actualizo la lista de contactos');
+                    //llamar el numero de contactos del user
+                    $contactNumber = $this->userModel->getContactsNumber($data['user_id']);
+                    
+                    if($contactNumber !== 0){
+                        $contactResponse = $this->userModel->updateUserCount($data['user_id'], $contactNumber['contacts']);
+                        
+                        if($contactResponse == true){
+                            echo('Todo funciono bien');
+                        }else{
+                            echo('Funciono el creado pero no actualizo la lista de contactos');
+                        }
                     }
+
                     /* 
-                        1. validar el formulario
-                        2. consumir nro de contactos de la bd para poder actualizar correctamente
                         3. controlar mensajes de feedback (opcional)
-                        4. mostrar elementos en main
                         5. actualizarlos y eliminar (opcional)
                     */
                 }else {
