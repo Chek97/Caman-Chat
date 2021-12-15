@@ -18,28 +18,11 @@
             </div>
             <div class="main-aside--content">
                 <?php
-                    //componente aparte 
-                    require_once('../../Controllers/Contacts/ContactsController.php');
-                    $listContacts = $insController->getListOfContacts($_SESSION['user']['id']);
-                    if(count($listContacts) > 0){
-                ?>
-                        <div class="main-aside__contacts-message__yes">
-                            <p>Hay contactos</p>
-                            <a href="#"><button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
-                        </div>
-                <?php    
-                    }else {
-                ?>
-                        <div class="main-aside__contacts-message__not">
-                            <p>No hay contactos agregados</p>
-                            <a href="#"><button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
-                        </div>
-                <?php
-                    } 
+                    require_once('./contactsList.php');
                 ?>
             </div>
         </aside>
-        <section>
+        <section class="main-conversations">
             Conversaciones pendientes
         </section>
         <!-- Ajustar el tamaño con grid css -->
@@ -49,6 +32,6 @@
             </p>
         </header>
     </div>
-    <?php include_once('../includes/footer.php'); ?>
+    <!-- <?php include_once('../includes/footer.php'); ?> -->
 </body>
 </html>

@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "bootstrap": "^4.6.1"
-  }
+  },
+  "name": "caman-chat",
+  "description": "A social media app for send and recibe messages",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "sass styles/bootstrap.scss Public/css/bootstrap.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chek97/Caman-Chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chek97/Caman-Chat/issues"
+  },
+  "homepage": "https://github.com/Chek97/Caman-Chat#readme"
 }

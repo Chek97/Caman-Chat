@@ -1,0 +1,27 @@
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
+    .main-aside {
+    
+        .main-aside--header {
+            background-color: $secondary;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            font-family: Monserrat-Semibold;
+        }
+    }
+    
+    .main-conversations {
+        border: 1px solid green;
+        
+    }
+    
+    .main-header {
+        border: 1px solid purple;
+
+    }
+}

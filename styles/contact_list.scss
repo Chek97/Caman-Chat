@@ -1,0 +1,20 @@
+.main-aside--content {
+    border-right: 2px solid $primary;
+    background-color: $secondary;
+
+    .contact-list {
+        height: 100vh;
+
+        li {
+            display: flex;
+            padding: 20px 10px;
+            justify-content: space-between;
+            align-items: center;
+
+            .contact-list-item__img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+}
