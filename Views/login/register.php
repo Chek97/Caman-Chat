@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['user'])){
+        header('location: ../main/main.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +44,6 @@
             </form>
         </div>
     </section>
-    <?php include_once('../includes/footer.php'); ?>
+    <!-- <?php include_once('../includes/footer.php'); ?> -->
 </body>
 </html>
