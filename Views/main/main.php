@@ -12,6 +12,7 @@
         include_once('../includes/navbar.php');
     ?>
     <div class="main-content">
+        <?php require('../includes/session.php'); ?>
         <aside class="main-aside">
             <div class="main-aside--header">
                 <h2>CONTACTOS</h2>

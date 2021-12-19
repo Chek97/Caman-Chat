@@ -14,6 +14,10 @@
             <div>
                 <p><?php echo($contact['name'] . ' ' . $contact['last_name']); ?></p>
             </div>
+            <div>
+                <a href="../contacts/editContact.php?id=<?php echo($contact['id']); ?>"><i class="far fa-edit"></i></a>
+                <a href="../../Controllers/Contacts/ContactsController.php?a=delete&id=<?php echo($contact['id']); ?>"><i class="far fa-trash-alt"></i></a>
+            </div>
             <a href="#">Seguir</a>
         </li>
         <?php 

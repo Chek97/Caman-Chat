@@ -2,7 +2,6 @@
 
     require_once('../../Models/Contacts/Contacts.php');
     require_once('../../Models/User/User.php');
-    include('../../Helpers/validForm.php');
 
     if(!isset($_SESSION['user']['contacts'])){
         session_start();
@@ -60,6 +59,7 @@
                         }
     
                         /* 
+                            //peticion para que no deje agregar contactos si no funciona
                             5. actualizarlos y eliminar (opcional)
                         */
                     }else {
@@ -73,6 +73,39 @@
                 header('location: ../../Views/contacts/addContact.php');
             }               
         }
+
+        public function getContact($id){
+            $response = $this->contactModel->getContactById($id);
+            return $response;
+        }
+
+        public function updateContactData($data){
+            $response = $this->contactModel->updateContact($data['contact_id'], $data);
+
+            if($response == true){
+                $_SESSION['message'] = 'Los datos fueron actualizados';
+                $_SESSION['status'] = 'success';
+                header('location: ../../Views/contacts/editContact.php?id=' . $data['contact_id']);
+            }else {
+                $_SESSION['message'] = 'Los datos no pudieron actualizarse';
+                $_SESSION['status'] = 'danger';
+                header('location: ../../Views/contacts/editContact.php?id=' . $data['contact_id']);
+            }
+        }
+
+        public function deleteContact($id){
+            $response = $this->contactModel->deleteContactById($id);
+            
+            if($response == true){
+                $_SESSION['message'] = 'Contacto eliminado';
+                $_SESSION['status'] = 'success';
+                header('location: ../../Views/main/main.php');
+            }else {
+                $_SESSION['message'] = 'El contacto no pudo eliminarse';
+                $_SESSION['status'] = 'danger';
+                header('location: ../../Views/main/main.php');
+            }
+        }
     }
 
     $insController = new ContactsController();
@@ -82,6 +115,12 @@
             case 'add':
                 $insController->addContactToList($_POST);
                 break; 
+            case 'edit':
+                $insController->updateContactData($_POST);
+                break;
+            case 'delete':
+                $insController->deleteContact($_GET['id']);
+                break;
             default:
                 echo('Comando no permitido');
                 break;
