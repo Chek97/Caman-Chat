@@ -28,7 +28,9 @@
 ?>
     <div class="main-aside__contacts-message__not">
         <p>No hay contactos agregados</p>
-        <a href="../contacts/addContact.php"><button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
+        <div class=" mt-3 text-center">
+            <a href="../contacts/addContact.php"><button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
+        </div>
     </div>
 <?php 
     }

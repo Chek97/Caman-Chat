@@ -10081,6 +10081,10 @@ body .landing-info-page article p {
   color: #fff;
   font-family: Monserrat-Semibold;
 }
+.main-content .main-aside .main-aside--content {
+  height: 100vh;
+  border: 1px solid red;
+}
 .main-content .main-conversations {
   border: 1px solid green;
 }

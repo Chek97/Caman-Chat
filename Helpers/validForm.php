@@ -20,4 +20,16 @@
 
         return $errors;
     }
+
+    function validateAddContactForm($fields){
+        $errors = array();
+        //validamos si existen campos vacios
+        foreach ($fields as $field => $value) {
+            if(empty($value)){
+                $errors[$field] = 'Este campo es obligatorio';
+            }
+        }
+
+        return $errors;
+    }
 ?>
