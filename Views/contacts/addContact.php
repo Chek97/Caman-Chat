@@ -11,6 +11,7 @@
         isLoggin();
         include_once('../includes/navbar.php');
     ?>
+    <a href="../main/main.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
     <section class="login-container"> 
         <?php require('../includes/session.php'); ?>
         <header>

@@ -69,14 +69,50 @@
 
         }
 
-        public function updateUser(){
+        public function updateUser($data){
+            
+            $validation = validateUpdateUserForm($data);
 
+            if(count($validation) == 0){
+
+                $nameFile = $_FILES['photo']['name'];
+                $destinyFolder = $_SERVER['DOCUMENT_ROOT'] . '/PHP/Proyectos/Caman-Chat/Public/files/';
+                move_uploaded_file($_FILES['photo']['tmp_name'], $destinyFolder . $nameFile);
+
+                $response = $this->userModel->updateUserData($data, $nameFile);
+
+                if($response == true){
+                    $_SESSION['message'] = 'datos actualizados correctamente';
+                    $_SESSION['status'] = 'success';
+                    header('location: ../../Views/main/editUser.php?id=' . $data['user_id']);
+                }else {
+                    $_SESSION['message'] = 'Los datos no se actualizaron';
+                    $_SESSION['status'] = 'danger';
+                    header('location: ../../Views/main/editUser.php?id=' . $data['user_id']);
+                }
+            }else {
+                $_SESSION['message'] = 'No se puede actualizar los datos';
+                $_SESSION['status'] = 'danger';
+                $_SESSION['errors'] = $validation;
+                header('location: ../../Views/main/editUser.php?id=' . $data['user_id']);
+            }
         }
 
         public function logOut(){
             session_unset();
             session_destroy();
             header('location: ../../Views/login/login.php');
+        }
+
+        public function getUser($id){
+            $response = $this->userModel->getUserById($id);
+            if($response != []){
+                return $response;
+            }else {
+                $_SESSION['message'] = 'No se pudo obtener los datos del usuario';
+                $_SESSION['status'] = 'warning';
+                header('location: ../../Views/main/main.php');
+            }
         }
         
     }
@@ -89,8 +125,10 @@
                 $controller->createUser($_POST);
                 break;
             case 'get':
+                $controller->getUser($_GET['id']);
                 break;
             case 'update':
+                $controller->updateUser($_POST);
                 break;
             case 'validate':
                 $controller->validateUser($_POST);

@@ -29,7 +29,7 @@
         <!-- Ajustar el tamaño con grid css -->
         <header class="main-header">
             <p>
-                Bienvenido Usuario <strong><?php echo($_SESSION['user']['username'])?></strong> <a href="#">Editar</a>
+                Bienvenido Usuario <strong><?php echo($_SESSION['user']['username'])?></strong> <a href="./editUser.php?id=<?php echo($_SESSION['user']['id']); ?>">Editar</a><!-- EDITAR USUARIO -->
             </p>
         </header>
     </div>

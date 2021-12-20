@@ -32,4 +32,16 @@
 
         return $errors;
     }
+
+    function validateUpdateUserForm($fields){
+        $errors = array();
+
+        foreach ($fields as $field => $value) {
+            if(empty($value) && $value !== 'photo'){
+                $errors[$field] = 'Este campo es obligatorio';
+            }
+        }
+
+        return $errors;
+    }
 ?>

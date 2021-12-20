@@ -13,6 +13,7 @@
 
         $contactInfo = $insController->getContact($_GET['id']);
     ?>
+    <a href="../main/main.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
     <section class="login-container"> 
         <?php require('../includes/session.php'); ?>
         <header>
