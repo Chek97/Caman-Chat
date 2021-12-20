@@ -53,6 +53,24 @@
 
             return $request->rowCount() > 0 ? $request->fetch() : 0;
         }
+
+        public function getUserById($user_id){
+            $request = $this->db->prepare("SELECT * FROM user WHERE id = :id");
+            $request->execute(array(':id' => $user_id));
+
+            return $request->rowCount() > 0 ? $request->fetch(PDO::FETCH_ASSOC) : [];
+        }
+
+        public function updateUserData($data, $img){
+            $request = $this->db->prepare("UPDATE user SET name= :nam, last_name= :ln, username= :us, photo= :pho WHERE id= :id");
+            $request->execute(array(':nam' => $data['name'], ':ln' => $data['last_name'], ':us' => $data['username'], ':pho' => $img, ':id' => $data['user_id']));
+
+            if($request->rowCount() > 0){
+                return true;
+            }else {
+                return false;
+            }
+        }
     }
 
 ?>

@@ -20,4 +20,28 @@
 
         return $errors;
     }
+
+    function validateAddContactForm($fields){
+        $errors = array();
+        //validamos si existen campos vacios
+        foreach ($fields as $field => $value) {
+            if(empty($value)){
+                $errors[$field] = 'Este campo es obligatorio';
+            }
+        }
+
+        return $errors;
+    }
+
+    function validateUpdateUserForm($fields){
+        $errors = array();
+
+        foreach ($fields as $field => $value) {
+            if(empty($value) && $value !== 'photo'){
+                $errors[$field] = 'Este campo es obligatorio';
+            }
+        }
+
+        return $errors;
+    }
 ?>

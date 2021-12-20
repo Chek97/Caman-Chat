@@ -1,3 +1,8 @@
+<?php 
+    unset($_SESSION['errors']);
+    unset($_SESSION['message']);
+    unset($_SESSION['status']); 
+?>
 <footer>
     <section class="footer-section__info">
         <p>

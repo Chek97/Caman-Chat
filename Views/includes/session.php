@@ -18,7 +18,4 @@
     </div>
 <?php
     }
-    unset($_SESSION['errors']);
-    unset($_SESSION['message']);
-    unset($_SESSION['status']); 
 ?>

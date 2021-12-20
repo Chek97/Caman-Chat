@@ -12,6 +12,7 @@
         include_once('../includes/navbar.php');
     ?>
     <div class="main-content">
+        <?php require('../includes/session.php'); ?>
         <aside class="main-aside">
             <div class="main-aside--header">
                 <h2>CONTACTOS</h2>
@@ -28,7 +29,7 @@
         <!-- Ajustar el tamaño con grid css -->
         <header class="main-header">
             <p>
-                Bienvenido Usuario <strong><?php echo($_SESSION['user']['username'])?></strong> <a href="#">Editar</a>
+                Bienvenido Usuario <strong><?php echo($_SESSION['user']['username'])?></strong> <a href="./editUser.php?id=<?php echo($_SESSION['user']['id']); ?>">Editar</a><!-- EDITAR USUARIO -->
             </p>
         </header>
     </div>
