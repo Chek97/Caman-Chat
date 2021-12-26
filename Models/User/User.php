@@ -34,10 +34,8 @@
         }
 
         public function updateUserCount($user_id, $contacts){
-            $newContacts = $contacts + 1;
-            
             $request = $this->db->prepare("UPDATE user SET contacts = :con WHERE id = :id");
-            $request->execute(array(':con' => $newContacts, ':id' => $user_id));
+            $request->execute(array(':con' => $contacts, ':id' => $user_id));
 
             if($request->rowCount() > 0){
                 return true;
@@ -51,7 +49,7 @@
             $request = $this->db->prepare("SELECT contacts FROM user WHERE id= :id");
             $request->execute(array(':id' => $user_id));
 
-            return $request->rowCount() > 0 ? $request->fetch() : 0;
+            return $request->rowCount() > 0 ? $request->fetch(PDO::FETCH_ASSOC) : 0;
         }
 
         public function getUserById($user_id){

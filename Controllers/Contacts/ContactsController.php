@@ -2,6 +2,7 @@
 
     require_once('../../Models/Contacts/Contacts.php');
     require_once('../../Models/User/User.php');
+    require_once('../../Helpers/validForm.php');
 
     if(!isset($_SESSION['user']['contacts'])){
         session_start();
@@ -41,7 +42,8 @@
                         $contactNumber = $this->userModel->getContactsNumber($data['user_id']);
                         
                         if($contactNumber !== 0){
-                            $contactResponse = $this->userModel->updateUserCount($data['user_id'], $contactNumber['contacts']);
+                            $newCount = $contactNumber['contacts'] + 1;
+                            $contactResponse = $this->userModel->updateUserCount($data['user_id'], $newCount);
                             
                             if($contactResponse == true){
                                 $_SESSION['message'] = 'El contacto fue agregado con exito';
@@ -94,12 +96,24 @@
         }
 
         public function deleteContact($id){
+            
             $response = $this->contactModel->deleteContactById($id);
             
             if($response == true){
-                $_SESSION['message'] = 'Contacto eliminado';
-                $_SESSION['status'] = 'success';
-                header('location: ../../Views/main/main.php');
+                $contactList = $this->userModel->getContactsNumber($_SESSION['user']['id']);
+                $newContacts = $contactList['contacts'] - 1;
+
+                if($this->userModel->updateUserCount($_SESSION['user']['id'], $newContacts) == true){
+                    $_SESSION['message'] = 'Contacto eliminado';
+                    $_SESSION['status'] = 'success';
+                    header('location: ../../Views/main/main.php');
+
+                }else {
+                    $_SESSION['message'] = 'El contacto no pudo eliminarse';
+                    $_SESSION['status'] = 'danger';
+                    header('location: ../../Views/main/main.php');
+                }
+                
             }else {
                 $_SESSION['message'] = 'El contacto no pudo eliminarse';
                 $_SESSION['status'] = 'danger';
