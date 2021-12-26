@@ -19,11 +19,35 @@
     .main-conversations {
         border: 1px solid green;
         width: 70%;
-        
-    }
-    
-    .main-header {
-        border: 1px solid purple;
+        display: flex;
 
+        .main-pendient {
+            border: 1px solid red;
+            width: 80%;
+        }
+
+        .main-user-edit {
+            padding: 10px;
+            text-align: center;
+
+            p {
+                background-color: $secondary;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 20px;
+                
+                a {
+                    text-decoration: none;
+                    
+                    &:hover {
+                        color: #fff;
+                        background-color: $primary;
+                        padding: 5px;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+        
     }
 }

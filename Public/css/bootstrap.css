@@ -10087,9 +10087,30 @@ body .landing-info-page article p {
 .main-content .main-conversations {
   border: 1px solid green;
   width: 70%;
+  display: flex;
 }
-.main-content .main-header {
-  border: 1px solid purple;
+.main-content .main-conversations .main-pendient {
+  border: 1px solid red;
+  width: 80%;
+}
+.main-content .main-conversations .main-user-edit {
+  padding: 10px;
+  text-align: center;
+}
+.main-content .main-conversations .main-user-edit p {
+  background-color: #0B5394;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.main-content .main-conversations .main-user-edit p a {
+  text-decoration: none;
+}
+.main-content .main-conversations .main-user-edit p a:hover {
+  color: #fff;
+  background-color: #6495ED;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .main-aside--content {
