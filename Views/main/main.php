@@ -18,7 +18,7 @@
         ?>
         <section class="main-conversations">
             <div class="main-pendient">
-                <p>Conversaciones pendientes</p>
+                <p>Conversaciones pendientes <?php echo(date('l jS \of F Y h:i:s A')); ?></p>
             </div>
             <div class="main-user-edit">
                 <p>

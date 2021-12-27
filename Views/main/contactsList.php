@@ -24,7 +24,11 @@
                         <a href="../contacts/editContact.php?id=<?php echo($contact['id']); ?>"><i class="far fa-edit"></i></a>
                         <a href="../../Controllers/Contacts/ContactsController.php?a=delete&id=<?php echo($contact['id']); ?>"><i class="far fa-trash-alt"></i></a>
                     </div>
-                    <a class="contact-list-item__message" href="#"><i class="fas fa-chevron-right"></i></a>
+                    <a 
+                        class="contact-list-item__message" 
+                        href="../conversations/chatRoom.php?id=<?php echo($_SESSION['user']['id']); ?>&contactId=<?php echo($contact['user_contact_id']); ?>">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
             </li>
             <?php 

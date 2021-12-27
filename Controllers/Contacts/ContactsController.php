@@ -36,36 +36,46 @@
                     $_SESSION['status'] = 'danger';
                     header('location: ../../Views/contacts/addContact.php');
                 }else {
-                    $response = $this->contactModel->createContact($data['name'], $data['last_name'], $data['user_id']);
-    
-                    if($response){
-                        $contactNumber = $this->userModel->getContactsNumber($data['user_id']);
-                        
-                        if($contactNumber !== 0){
-                            $newCount = $contactNumber['contacts'] + 1;
-                            $contactResponse = $this->userModel->updateUserCount($data['user_id'], $newCount);
-                            
-                            if($contactResponse == true){
-                                $_SESSION['message'] = 'El contacto fue agregado con exito';
-                                $_SESSION['status'] = 'success';
-                                header('location: ../../Views/contacts/addContact.php');
-                            }else{
-                                $_SESSION['message'] = 'El contacto fue agregado parcialmente, pero no se vera reflejado en tu lista de contactos';
-                                $_SESSION['status'] = 'warning';
-                                header('location: ../../Views/contacts/addContact.php');
-                            }
-                        }else {
-                            $_SESSION['message'] = 'No fue posible actualizar el contacto agregado a tu lista';
-                            $_SESSION['status'] = 'warning';
+                    //verificar si existe el usuario en contactos
+                    $userInfo = $this->userModel->getUserByUsername($data['username']);
+                    if($userInfo !== []){
+                        $contactUserExists = $this->contactModel->getContactByUserId($userInfo['id'], $data['user_id']);
+                        if($contactUserExists == true){
+                            $_SESSION['message'] = 'Ya tiene al usuario "' . $data['username'] . '" agregado como contacto';
+                            $_SESSION['status'] = 'danger';
                             header('location: ../../Views/contacts/addContact.php');
-                        }
+                        }else {
+                            $response = $this->contactModel->createContact($data['name'], $data['last_name'], $data['user_id'], $userInfo['id']);
     
-                        /* 
-                            //peticion para que no deje agregar contactos si no funciona
-                            5. actualizarlos y eliminar (opcional)
-                        */
+                            if($response){
+                                $contactNumber = $this->userModel->getContactsNumber($data['user_id']);
+                                
+                                if($contactNumber !== 0){
+                                    $newCount = $contactNumber['contacts'] + 1;
+                                    $contactResponse = $this->userModel->updateUserCount($data['user_id'], $newCount);
+                                    
+                                    if($contactResponse == true){
+                                        $_SESSION['message'] = 'El contacto fue agregado con exito';
+                                        $_SESSION['status'] = 'success';
+                                        header('location: ../../Views/contacts/addContact.php');
+                                    }else{
+                                        $_SESSION['message'] = 'El contacto fue agregado parcialmente, pero no se vera reflejado en tu lista de contactos';
+                                        $_SESSION['status'] = 'warning';
+                                        header('location: ../../Views/contacts/addContact.php');
+                                    }
+                                }else {
+                                    $_SESSION['message'] = 'No fue posible actualizar el contacto agregado a tu lista';
+                                    $_SESSION['status'] = 'warning';
+                                    header('location: ../../Views/contacts/addContact.php');
+                                }
+                            }else {
+                                echo('No se logro postear el contacto');
+                            }
+                        }
                     }else {
-                        echo('No se logro postear el contacto');
+                        $_SESSION['message'] = 'Los datos de "' . $data['username'] . '" no se cargaron, intenta nuevamente';
+                        $_SESSION['status'] = 'danger';
+                        header('location: ../../Views/contacts/addContact.php');
                     }
                 }
             }else {
@@ -140,7 +150,5 @@
                 break;
         }
     }
-
-
 
 ?>
