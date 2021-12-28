@@ -69,6 +69,13 @@
                 return false;
             }
         }
+
+        public function getUserByUsername($username){
+            $request = $this->db->prepare("SELECT id FROM user WHERE username = :user");
+            $request->execute(array(':user' => $username));
+
+            return $request->rowCount() > 0 ? $request->fetch(PDO::FETCH_ASSOC) : [];
+        }
     }
 
 ?>
