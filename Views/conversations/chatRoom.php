@@ -6,13 +6,14 @@
         include_once('../includes/header.php'); 
         include('../../Helpers/sessionStatus.php');
         isLoggin();
-
-        $ConController->getConversationByMembers($_GET['id'], $_GET['contactId']);
     ?>
     <title>Conversation</title>
 </head>
 <body>
-    <?php include_once('../includes/navbar.php'); ?>
+    <?php 
+        include_once('../includes/navbar.php'); 
+        require('../includes/session.php'); 
+    ?>
     
 
     <?php include_once('../includes/footer.php'); ?>

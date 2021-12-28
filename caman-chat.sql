@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2021 a las 03:17:58
+-- Tiempo de generación: 28-12-2021 a las 07:28:03
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.4.19
 
@@ -31,17 +31,19 @@ CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_bin NOT NULL,
   `last_name` varchar(50) COLLATE utf8_bin NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `user_contact_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `name`, `last_name`, `user_id`) VALUES
-(1, 'humera', 'lopez', 7),
-(2, 'isa', 'nemo', 7),
-(22, 'valen', 'caicedo', 7);
+INSERT INTO `contacts` (`id`, `name`, `last_name`, `user_id`, `user_contact_id`) VALUES
+(1, 'humera', 'lopez', 7, 9),
+(2, 'isa', 'nemo', 7, 11),
+(22, 'valen', 'caicedo', 7, 10),
+(26, 'draacula', 'doreta', 7, 8);
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,14 @@ CREATE TABLE `conversation` (
   `messages_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `conversation`
+--
+
+INSERT INTO `conversation` (`id`, `name`, `members`, `last_message`, `created_at`, `messages_count`) VALUES
+(9, 'Conversasion 7,8', '7,8', 0, '2021-12-28', 0),
+(10, 'Conversasion 7,10', '7,10', 0, '2021-12-28', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +79,16 @@ CREATE TABLE `members` (
   `user_id` int(11) NOT NULL,
   `conversation_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `members`
+--
+
+INSERT INTO `members` (`id`, `user_id`, `conversation_id`) VALUES
+(7, 7, 9),
+(8, 8, 9),
+(9, 7, 10),
+(10, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -120,8 +140,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `name`, `last_name`, `status`, `photo`, `contacts`, `password`) VALUES
-(7, 'chek97', 'cristian', 'checa', '', '', 3, '$2y$10$bhhEXu0iZHpbkuQPE3wJve3Itu.bFA1NZcZyehgk/8eUkTMJcwyfq'),
-(8, 'jhonnatan24', 'jhon23', 'garcia2', '', 'Plantilla-momo-se-tenia-que-decir-y-se-dijo.jpg', 1, '$2y$10$0/z4VjSGOgTi8C1xjRb9qOxptSQ6RRVFqu9s0tR.Taa.zZk4QJItu'),
+(7, 'chek97', 'cristian', 'checa', '', '', 4, '$2y$10$bhhEXu0iZHpbkuQPE3wJve3Itu.bFA1NZcZyehgk/8eUkTMJcwyfq'),
+(8, 'jhonnatan24', 'jhon23', 'garcia2', '', 'Plantilla-momo-se-tenia-que-decir-y-se-dijo.jpg', 0, '$2y$10$0/z4VjSGOgTi8C1xjRb9qOxptSQ6RRVFqu9s0tR.Taa.zZk4QJItu'),
 (9, 'daniapra23', 'daniela', 'apraez', '', '', 0, '$2y$10$X16gBnPqefvjqcj3vlYWV.MjkXbvGPNMr/H9KqfGMvKvfvUtReLju'),
 (10, 'valen2905', 'valentina', 'caicedo', '', '', 0, '$2y$10$Ty2rmyziWw2m.vpES/R2WuHgw.YxML2pfoOjkthfK8jHt7/CtjHfa'),
 (11, 'isaOmen01', 'isabella', 'Omen', '', '', 0, '$2y$10$b17/QFqUhjhi6ggdAtgKNeHtZEAirj3CEfUsJmd45QG2f9SCAr9ju');
@@ -135,13 +155,15 @@ INSERT INTO `user` (`id`, `username`, `name`, `last_name`, `status`, `photo`, `c
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_contact_id` (`user_contact_id`);
 
 --
 -- Indices de la tabla `conversation`
 --
 ALTER TABLE `conversation`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
   ADD KEY `last_message` (`last_message`);
 
 --
@@ -181,19 +203,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `conversation`
 --
 ALTER TABLE `conversation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `message`
@@ -215,7 +237,8 @@ ALTER TABLE `user`
 -- Filtros para la tabla `contacts`
 --
 ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`user_contact_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `members`

@@ -26,7 +26,7 @@
                     </div>
                     <a 
                         class="contact-list-item__message" 
-                        href="../conversations/chatRoom.php?id=<?php echo($_SESSION['user']['id']); ?>&contactId=<?php echo($contact['user_contact_id']); ?>">
+                        href="../../Controllers/Conversation/ConversationController.php?a=get&id=<?php echo($_SESSION['user']['id']); ?>&contactId=<?php echo($contact['user_contact_id']); ?>">
                         <i class="fas fa-chevron-right"></i>
                     </a>
                 </div>
