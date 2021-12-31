@@ -1,14 +1,16 @@
 <?php 
 
     namespace MyApp;
-
+    
+    include_once('../Controllers/Messages/MessageController.php');
     use Ratchet\MessageComponentInterface;
     use Ratchet\ConnectionInterface;
-
+    
+    
     class Chat implements MessageComponentInterface {
-
+        
         protected $clients;
-
+        
         public function __construct(){
             $this->clients = new \SplObjectStorage;
             echo('Servidor iniciado');
@@ -16,11 +18,18 @@
         
         public function onOpen(ConnectionInterface $conn){//establece una conexion, un usuario se conecta
             $this->clients->attach($conn);
-
+            
             echo("Nuevo usuario conectado: ({$conn->resourceId})\n");
         }
-
+        
         public function onMessage(ConnectionInterface $from, $msg){// se mandan mensajes
+            $message = json_decode($msg, true);
+            $reqMessage = $mesController->createMessage($message['data'], $message['user'], $message['conversation']);
+            if($reqMessage == true){
+                echo('--mensaje almacenado en bd--');
+            }else {
+                echo('--Error al inserar--');
+            }
             foreach ($this->clients as $client) {
                 if ($from !== $client) {
                     // The sender is not the receiver, send to each client connected

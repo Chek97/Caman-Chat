@@ -11,6 +11,8 @@
 
     $chatMembers = explode(',', $_GET['c']);
     $contactInfo = $controller->getUser($chatMembers[1]);
+
+    $conversationId = $ConController->getConversation($_GET['c']);
     ?>
     <title>Conversation</title>
 </head>
@@ -51,17 +53,17 @@
                 </div>
             </div>
             <!-- 
-                1.validar al momento de enviar mensajes (vacios)
                 2. guardar en bd los mensajes
                 3. cuando traiga definir que caja se va a enviar
              -->
         </div>
         <div class="chat-input-container">
+            <input type="hidden" id="user-id" value="<?php echo($chatMembers[0]); ?>">
+            <input type="hidden" id="conversation-id" value="<?php echo($conversationId['id']); ?>">
             <textarea name="message" id="message" cols="30" rows="10"></textarea>
             <button class="btn btn-primary" id="send-message"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-    <?php include_once('../includes/footer.php'); ?>
     <script>
         var conn = new WebSocket('ws://localhost:8080');
         conn.onopen = function(e) {
@@ -70,10 +72,11 @@
 
         conn.onmessage = function(e) {
             var response = JSON.parse(e.data);
-            console.log(response);
+            console.log(response.data);
         };
-        conn.send('Hola Mundo');
+        //conn.send('Hola Mundo');
     </script>
     <script src="../../Public/js/socket.js"></script>
+    <?php include_once('../includes/footer.php'); ?>
 </body>
 </html>

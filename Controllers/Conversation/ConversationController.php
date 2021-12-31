@@ -76,6 +76,16 @@
                 }
             } 
         }
+
+        public function getConversation($members){
+            $request = $this->conversationModel->getConversationByMembers($members);
+
+            if($request !== []){
+                return $request;
+            }else {
+                return [];
+            }
+        }
     }
 
     $ConController = new ConversationController();
