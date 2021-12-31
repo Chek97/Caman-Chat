@@ -33,6 +33,13 @@
 
             return $request->rowCount() > 0 ? $request->fetch(PDO::FETCH_ASSOC) : [];
         }
+        
+        public function getConversationByMembers($members){
+            $request = $this->db->prepare("SELECT id FROM conversation WHERE members= :memb");
+            $request->execute(array(':memb' => $members));
+    
+            return $request->rowCount() > 0 ? $request->fetch(PDO::FETCH_ASSOC) : [];
+        }
     }
 
 ?>
